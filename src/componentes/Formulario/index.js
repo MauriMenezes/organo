@@ -1,10 +1,18 @@
 
 import Botao from '../Botao';
+import { useState } from 'react';
 import CampoTexto from '../CampoTexto';
 import ListaSuspensa from '../ListaSuspensa';
 import './Formulario.css'
 
-const Formulario = () => {
+const Formulario = (props) => {
+
+  const [nome, setNome] = useState("")
+  const [cargo, setCargo] = useState("")
+  const [img, setImg] = useState("")
+  const [time, setTime] = useState("")
+
+
 
   const times = [
     'Front-End',
@@ -12,19 +20,68 @@ const Formulario = () => {
     'UX e Design',
     'Inovação e gestão'
   ]
-  const aoSalvar = (e) => {
+  const salvar = (e) => {
     e.preventDefault()
-    console.log("form submetido")
+    props.cadastro({
+
+      nome,
+      cargo,
+      img,
+      time
+    })
   }
+
   return (
 
     <section className='formulario'>
-      <form onSubmit={aoSalvar}>
+      <form onSubmit={salvar}>
         <h2>Preencha os dados para criar o card do colaborador RECODE</h2>
-        <CampoTexto obrigatorio={true} label="Nome" placeholder="Digite seu nome aqui" />
-        <CampoTexto obrigatorio={true} label="Cargo" placeholder="Digite seu nome Cargo" />
-        <CampoTexto label="Imagem" placeholder="Digite o endereço da imagem aqui" />
-        <ListaSuspensa label='Time' itens={times} />
+
+        <CampoTexto
+          //CAMPO NOME
+          valor={nome}
+          aoAlterado={
+            function (valor) {
+              setNome(valor)
+              console.log(valor + " //");
+            }}
+
+          obrigatorio={true}
+          label="Nome"
+          placeholder="Digite seu nome aqui"
+        />
+
+        <CampoTexto
+          valor={cargo}
+          aoAlterado={
+            function aoAlterado(valor) {
+              setCargo(valor)
+              console.log(valor + " --/");
+            }}
+          obrigatorio={true}
+          label="Cargo"
+          placeholder="Digite seu nome Cargo"
+        />
+        <CampoTexto
+          valor={img}
+          aoAlterado={
+            function aoAlterado(valor) {
+              setImg(valor)
+              console.log(valor + " ?? ");
+            }}
+          label="Imagem"
+          placeholder="Digite o endereço da imagem aqui"
+        />
+        <ListaSuspensa
+          label='Time'
+          itens={times}
+          valor={time}
+          aoAlterado={
+            function (valor) {
+              setTime(valor)
+              console.log(valor + " <<< time");
+            }}
+        />
         <Botao>
           Criar Card
         </Botao>
