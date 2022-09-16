@@ -1,17 +1,41 @@
+import { useState } from 'react';
 import './Campotexto.css'
-const CampoTexto = (props) => {
 
-  let valor = 'Maurilio ';
+
+
+const CampoTexto = (props) => {
+  // const [nome, setNome] = useState("")
+
+
+
+  // const aoDigitado = (e) => {
+  //   setNome(e.target.value)
+  //   console.log(nome);
+
+  // }
+
+
   const aoDigitado = (e) => {
-    valor = e.target.value;
-    console.log(valor)
+
+    props.aoAlterado(e.target.value)
+    // console.log(props.valor)
+    // console.log(props.aoAlterado);
   }
+
   return (
     <div className="campo-texto">
       <label>
         {props.label}
       </label>
-      <input value={valor} onChange={aoDigitado} required={props.obrigatorio} placeholder={props.placeholder} />
+
+
+      <input
+        value={props.valor}
+        // value={nome}
+        onChange={aoDigitado}
+        required={props.obrigatorio}
+        placeholder={props.placeholder}
+      />
 
     </div>
 
