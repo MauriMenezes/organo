@@ -15,10 +15,11 @@ const Formulario = (props) => {
 
 
   const times = [
+    'Programação',
     'Front-End',
     'Back-End',
-    'UX e Design',
-    'Inovação e gestão'
+    'UX e Design'
+
   ]
   const salvar = (e) => {
     e.preventDefault()
