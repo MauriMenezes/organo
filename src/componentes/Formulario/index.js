@@ -14,13 +14,7 @@ const Formulario = (props) => {
 
 
 
-  const times = [
-    'Programação',
-    'Front-End',
-    'Back-End',
-    'UX e Design'
 
-  ]
   const salvar = (e) => {
     e.preventDefault()
     props.cadastro({
@@ -31,7 +25,6 @@ const Formulario = (props) => {
       time
     })
   }
-
   return (
 
     <section className='formulario'>
@@ -41,12 +34,7 @@ const Formulario = (props) => {
         <CampoTexto
           //CAMPO NOME
           valor={nome}
-          aoAlterado={
-            function (valor) {
-              setNome(valor)
-              console.log(valor + " //");
-            }}
-
+          aoAlterado={valor => setNome(valor)}
           obrigatorio={true}
           label="Nome"
           placeholder="Digite seu nome aqui"
@@ -54,34 +42,24 @@ const Formulario = (props) => {
 
         <CampoTexto
           valor={cargo}
-          aoAlterado={
-            function aoAlterado(valor) {
-              setCargo(valor)
-              console.log(valor + " --/");
-            }}
+          aoAlterado={valor => setCargo(valor)}
           obrigatorio={true}
           label="Cargo"
           placeholder="Digite seu nome Cargo"
         />
         <CampoTexto
           valor={img}
-          aoAlterado={
-            function aoAlterado(valor) {
-              setImg(valor)
-              console.log(valor + " ?? ");
-            }}
+          aoAlterado={valor => setImg(valor)}
           label="Imagem"
           placeholder="Digite o endereço da imagem aqui"
         />
         <ListaSuspensa
           label='Time'
-          itens={times}
+          itens={props.times}
           valor={time}
-          aoAlterado={
-            function (valor) {
-              setTime(valor)
-              console.log(valor + " <<< time");
-            }}
+          aoAlterado={valor => setTime(valor)}
+
+
         />
         <Botao>
           Criar Card
