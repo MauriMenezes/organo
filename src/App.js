@@ -7,9 +7,10 @@ import Time from './componentes/Time';
 
 function App() {
   // map
-  /////const numbers = [1, 2, 3, 4, 5]
+  const numbers = [1, 2, 3, 4, 5]
   //arrow function
-  // const doubleNumbers = numbers.map(elem => elem * 2)
+  const doubleNumbers = numbers.map(elem => elem * 2)
+  // console.log(doubleNumbers);
   /////Normal
   // const doubleNumbers = numbers.map(function (elem) {
   //   return elem * 2
@@ -39,12 +40,6 @@ function App() {
     }
   ]
 
-  // const teste = times.map(function (time) {
-
-  //   return time.nome + " FUNCIONA O MAP"
-  // })
-
-
   const [colaborador, setColaborador] = useState([])
 
   const aoColaboradorAdd = (colab) => {
@@ -58,19 +53,20 @@ function App() {
       <Formulario cadastro=
         {function (colab) {
           aoColaboradorAdd(colab)
+          console.log(colab);
         }}
+
+        times={times.map(function (time) {
+          return time.nome
+        })}
       />
+
 
       {times.map(function (times) {
         return <Time key={times.nome} nome={times.nome} corPrimaria={times.corPrimaria} corSecundaria={times.corSecundaria} />
       })}
 
       {/* {times.map(times => <Time nome={times.nome}></Time>)} */}
-
-      {/* <Time nome="Programação" />
-      <Time nome="Front-End" /> */}
-
-
     </div>
   );
 }
