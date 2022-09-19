@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import Banner from './componentes/Banner';
+import Footer from './componentes/footer';
 import Formulario from './componentes/Formulario';
 import Time from './componentes/Time';
 
@@ -72,6 +73,8 @@ function App() {
           })}
         />
       })}
+
+      <Footer />
 
       {/* {times.map(times => <Time nome={times.nome}></Time>)} */}
     </div>
