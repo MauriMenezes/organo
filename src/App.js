@@ -55,7 +55,6 @@ function App() {
           aoColaboradorAdd(colab)
           console.log(colab);
         }}
-
         times={times.map(function (time) {
           return time.nome
         })}
@@ -63,7 +62,15 @@ function App() {
 
 
       {times.map(function (times) {
-        return <Time key={times.nome} nome={times.nome} corPrimaria={times.corPrimaria} corSecundaria={times.corSecundaria} />
+        return <Time
+          key={times.nome}
+          nome={times.nome}
+          corPrimaria={times.corPrimaria}
+          corSecundaria={times.corSecundaria}
+          colaboradores={colaborador.filter(function (colaboradores) {
+            return colaboradores.time === times.nome
+          })}
+        />
       })}
 
       {/* {times.map(times => <Time nome={times.nome}></Time>)} */}
